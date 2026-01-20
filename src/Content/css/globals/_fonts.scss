@@ -1,0 +1,35 @@
+// Custom font
+
+// Proximus font
+
+@font-face {
+	font-family: 'Proximus';
+	src: url('../webfonts/proximus-extrabold-webfont.woff2') format('woff2'), url('../webfonts/proximus-extrabold-webfont.woff') format('woff');
+	font-weight: 900;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Proximus';
+	src: url('../webfonts/proximus-bold-webfont.woff2') format('woff2'), url('../webfonts/proximus-bold-webfont.woff') format('woff');
+	font-weight: bold;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Proximus';
+	src: url('../webfonts/proximus-regular-webfont.woff2') format('woff2'), url('../webfonts/proximus-regular-webfont.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Proximus';
+	src: url('../webfonts/proximus-light-webfont.woff2') format('woff2'), url('../webfonts/proximus-light-webfont.woff') format('woff');
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+}

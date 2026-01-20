@@ -1,0 +1,154 @@
+<script>
+	// ////////////
+	// UTIL FUNCTIONS
+	// ////////////
+
+	const objectToUrlEncoded = (obj) => {
+		const data = [];
+		for (let property in obj) {
+				const encodedKey = encodeURIComponent(property);
+				const encodedValue = encodeURIComponent(obj[property]);
+				data.push(encodedKey + "=" + encodedValue);
+		}
+		return data.join("&");
+	}
+
+	// ////////////
+	// GAME PROGRESSION EVENTS
+	// ////////////
+
+	window.addEventListener('game-start', () => {
+		fetch('Start', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+			},
+			body: objectToUrlEncoded({
+				hiddenId: document.querySelector('#hiddenId')?.value
+			})
+		}).then(function (response) {
+			if (response.error == true) {
+				window.location.href = 'Index';
+			}
+		});
+	});
+
+	window.addEventListener('game-win', () => {
+		fetch('Win', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+			},
+			body: objectToUrlEncoded({
+				hiddenId: document.querySelector('#hiddenId')?.value
+			})
+		}).then(function (response) {
+			if (response.error == true) {
+				window.location.href = 'Index';
+			}
+		});
+	});
+
+	window.addEventListener('game-lost', () => {
+		fetch('Lost', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+			},
+			body: objectToUrlEncoded({
+				hiddenId: document.querySelector('#hiddenId')?.value
+			})
+		}).then(function (response) {
+			if (response.error == true) {
+				window.location.href = 'Index';
+			}
+		});
+	});
+
+	// ////////////
+	// GAME FRONT EVENTS
+	// ////////////
+	window.addEventListener('answer-false', () => {
+		fetch('AtptFalse', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+			},
+			body: objectToUrlEncoded({
+				hiddenId: document.querySelector('#hiddenId')?.value
+			})
+		}).then(function (response) {
+			if (response.error == true) {
+				window.location.href = 'Index';
+			}
+		});
+	});
+
+	window.addEventListener('answer-true', () => {
+		fetch('AtptTrue', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+			},
+			body: objectToUrlEncoded({
+				hiddenId: document.querySelector('#hiddenId')?.value
+			})
+		}).then(function (response) {
+			if (response.error == true) {
+				window.location.href = 'Index';
+			}
+		});
+	});
+
+	// ////////////
+	// GAME BACK EVENTS
+	// ////////////
+
+	window.addEventListener('lqQuery', () => {
+		/* fetch('LQ', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+			},
+			body: objectToUrlEncoded({ hiddenId: document.querySelector('#hiddenId')?.value }),
+		}).then(function (response) {
+			if (response.error == true) {
+				window.location.href = 'Index';
+			}
+			response.json().then(data => {
+					window.dispatchEvent(new CustomEvent('lqResponse', { detail: data }));
+			});
+		}); */
+
+		const response = 'response';
+		window.dispatchEvent(new CustomEvent('lqResponse', {detail: response}));
+	});
+
+	window.addEventListener('carQuery', (ev) => {
+		const userAnswer = ev.detail.answer;
+
+		/* fetch('CAr', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+			},
+			body: objectToUrlEncoded({
+				hiddenId: document.querySelector('#hiddenId')?.value,
+				answer: userAnswer
+			}),
+		}).then(function (response) {
+			if (response.error == true) {
+				window.location.href = 'Index';
+			}
+			response.json().then(data => {
+					window.dispatchEvent(new CustomEvent('carResponse', { detail: data }));
+			});
+		}); */
+
+		const response = {
+			isRightAnswer: true
+		};
+
+		window.dispatchEvent(new CustomEvent('carResponse', {detail: response}));
+	});
+</script>

@@ -1,0 +1,19 @@
+body.choice {
+	.wrapper {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 100%;
+		padding: 2rem;
+
+		@include respond-to(medlarge) {
+			padding: 3rem;
+		}
+	}
+}

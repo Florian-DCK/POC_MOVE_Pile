@@ -1,0 +1,50 @@
+/* GAME */
+body.game {
+	// Edit this if you want to customize the loader elements
+	.pace {
+		&-progress {
+			background-image: url(../img/proximus/loader-default.png);
+
+			&-inner {
+				background-image: url(../img/proximus/loader-white.png);
+			}
+
+			// text
+			&::after {
+				color: $white;
+			}
+		}
+	}
+
+	.screen {
+		&--loader {
+		}
+
+		&--intro {
+		}
+
+		&--game {
+			&__playground,
+			&__ui {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				height: vh(100);
+			}
+
+			&__playground {
+			}
+
+			&__ui {
+			}
+		}
+
+		&--win,
+		&--lost {
+		}
+
+		&--subsidiary {
+		}
+	}
+}

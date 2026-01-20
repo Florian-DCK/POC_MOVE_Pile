@@ -1,0 +1,110 @@
+/* GENERIC */
+
+html {
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	font-size: 62.5%; /* 1em = 10px */
+	overscroll-behavior: none;
+
+	*,
+	*::before,
+	*::after {
+		box-sizing: inherit;
+	}
+
+	&:lang(fr) {
+		img.nl {
+			display: none !important;
+		}
+	}
+
+	&:lang(nl) {
+		img.fr {
+			display: none !important;
+		}
+	}
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+	background: $bg-neg-1;
+	font-family: $proximus;
+	font-size: 1.6rem;
+	color: $text-neg;
+	overflow-x: hidden;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+
+	&.game {
+		touch-action: pan-y; // prevents double tap zoom
+
+		.screen--game {
+			user-select: none;
+			touch-action: manipulation;
+		}
+	}
+
+	&.no-scroll {
+		height: 100%;
+		overflow: hidden;
+	}
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	flex-shrink: 0;
+	position: relative;
+	left: 0;
+	width: 100vw;
+	@include vh-height(100);
+	padding-top: 6rem;
+}
+
+.left-container,
+.right-container {
+	width: 100%;
+}
+
+img {
+	display: block;
+}
+
+button {
+	@include respond-mouse {
+		cursor: pointer;
+	}
+}
+
+.sm-only {
+	@include respond-to-landscape(medlarge) {
+		display: none;
+	}
+}
+
+.lg-only {
+	display: none;
+
+	@include respond-to-landscape(medlarge) {
+		display: block;
+	}
+}
+
+@include respond-touch {
+	.mouse-only {
+		display: none;
+	}
+}
+
+@include respond-mouse {
+	.touch-only {
+		display: none;
+	}
+}

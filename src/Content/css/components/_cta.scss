@@ -1,0 +1,172 @@
+.cta {
+	position: relative;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	min-width: 10rem;
+	height: clamp-scale(4.4, 5);
+	padding: 0 2rem;
+	border: 2px solid transparent;
+	border-radius: 0.3rem;
+	border-bottom-right-radius: clamp-scale(2.2, 2.5);
+	background: $purple;
+	font-size: clamp-scale(1.4, 1.6);
+	font-weight: 700;
+	line-height: 1.5;
+	text-align: center;
+	text-decoration: none;
+	color: $white;
+	vertical-align: middle;
+	box-shadow: 0 1.2rem 1rem -0.8rem rgba(#000, 0.16), 0 0.8rem 1rem -0.2rem rgba(#391d58, 0.16), 0 1rem 3rem rgba(#5c2d91, 0.24);
+	transition: all 0.2s ease-out;
+	cursor: pointer;
+
+	@include respond-to(medium) {
+		width: auto;
+	}
+
+	@include respond-to(medlarge) {
+	}
+
+	&.no-cut {
+		border-bottom-right-radius: 0.3rem !important;
+	}
+
+	&:focus,
+	&:hover {
+		outline: 0;
+		text-decoration: none;
+		background: transparent;
+		color: $purple;
+		box-shadow: none;
+		border-color: $purple;
+	}
+
+	&.negative {
+		background: $white;
+		color: $purple;
+
+		&:focus,
+		&:hover {
+			background: transparent;
+			border-color: $white;
+			color: $white;
+		}
+	}
+
+	&.secondary {
+		background: $purple-2;
+		color: $purple;
+		box-shadow: 0 0.7rem 1.6rem -0.4rem rgba(#5c2d91, 0.16);
+
+		&:focus,
+		&:hover {
+			background: transparent;
+			color: $purple;
+			box-shadow: none;
+			border-color: $purple;
+		}
+
+		&.negative {
+			background: rgba($white, 0.24);
+			color: $white;
+
+			&:focus,
+			&:hover {
+				background: transparent;
+				color: $white;
+				box-shadow: none;
+				border-color: $white;
+			}
+		}
+	}
+
+	&.contour {
+		background: transparent;
+		color: $purple;
+		border-color: $purple;
+		box-shadow: 0 0.7rem 1.6rem -0.4rem rgba(#5c2d91, 0.16);
+
+		&:focus,
+		&:hover {
+			background: $purple;
+			color: $white;
+		}
+
+		&.negative {
+			color: $white;
+			border-color: $white;
+
+			&:focus,
+			&:hover {
+				background: $white;
+				color: $purple;
+			}
+		}
+	}
+
+	&.disabled {
+		pointer-events: none;
+		opacity: 0.3;
+	}
+
+	&.anim-pulse {
+		@keyframes cta-pulse {
+			0% {
+				transform: scale(1);
+			}
+			3% {
+				transform: scale(1.05);
+			}
+			6% {
+				transform: scale(1);
+			}
+			9% {
+				transform: scale(1.05);
+			}
+			12% {
+				transform: scale(1);
+			}
+			100% {
+				transform: scale(1);
+			}
+		}
+		animation: cta-pulse 4s linear infinite;
+	}
+}
+
+a.cta-back {
+	display: inline-block;
+	position: absolute;
+	top: 8rem;
+	left: 2rem;
+	font-weight: 700;
+	color: $white;
+	z-index: $zi-cta-back;
+
+	span {
+		display: none;
+	}
+
+	@include respond-to-landscape(medlarge) {
+		span {
+			display: inline;
+		}
+	}
+
+	@include respond-to(xlarge) {
+		left: 3rem;
+	}
+
+	i {
+		font-size: 1.8rem;
+		margin: 0.2rem 1.5rem 0 0;
+	}
+
+	&:hover,
+	&:focus,
+	&:active {
+		text-decoration: underline;
+	}
+}

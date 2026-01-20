@@ -1,0 +1,91 @@
+$breakpoints: (
+  small: 375,     // recent phones
+  medsmall: 414,  // phones landscape
+  medium: 768,    // tablets portrait
+  medlarge: 992,  // tablets landscape / small laptops
+  large: 1200,    // laptops / small desktops
+  xlarge: 1440,   // desktops
+  xxlarge: 1600,  // large desktops
+  fhd: 1920       // full HD+
+);
+
+$breakpoints-h: (
+	narrow: 400,
+	small: 650,
+	medium: 768,
+	tall: 1000
+);
+
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media screen and (min-width: #{map-get($breakpoints, $breakpoint)}px) {
+      @content;
+    }
+  }
+  @else {
+    @media screen and (min-width: #{$breakpoint}px) {
+      @content;
+    }
+  }
+}
+
+// mobile-first breakpoints but applies only if landscape
+// particularly useful when landscape ipad changes layout but portrait ipad pro (which has same width than ipad's height) should keep "mobile" layout
+@mixin respond-to-landscape($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media screen and (min-width: #{map-get($breakpoints, $breakpoint)}px) and (orientation: landscape) {
+      @content;
+    }
+  }
+  @else {
+    @media screen and (min-width: #{$breakpoint}px) and (orientation: landscape) {
+      @content;
+    }
+  }
+}
+
+@mixin respond-to-height($bpw, $bph) {
+	@if map-has-key($breakpoints, $bpw) and map-has-key($breakpoints-h, $bph) {
+    @media screen and (min-width: #{map-get($breakpoints, $bpw)}px) and (min-height: #{map-get($breakpoints-h, $bph)}px) {
+      @content;
+    }
+  }
+  @else {
+    @media screen and (min-width: #{$bpw}px) and (min-height: #{$bph}px) {
+      @content;
+    }
+  }
+}
+
+@mixin less-than($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media screen and (max-width: #{map-get($breakpoints, $breakpoint) - 1}px) {
+      @content;
+    }
+  }
+  @else {
+    @media screen and (max-width: #{$breakpoint - 1}px) {
+      @content;
+    }
+  }
+}
+
+@mixin respond-touch {
+	@media only screen and (pointer: coarse) {
+    @content;
+  }
+}
+
+@mixin respond-mouse {
+	@media only screen and (pointer: fine) {
+    @content;
+  }
+}
+
+// IE
+
+@mixin ie {
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    @content;
+  }
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="{{ @ViewBag.Language }}">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<title>Enjoy! {{ title }}</title>
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<link rel="manifest" href="site.webmanifest" />
+		<link rel="apple-touch-icon" href="icon.png" />
+
+		<script>
+			window.paceOptions = {
+				restartOnRequestAfter: false
+			}
+		</script>
+		<script src="https://cdn.jsdelivr.net/npm/pace-js@latest/pace.min.js"></script>
+
+		{# <script src="https://kit.fontawesome.com/bb67c31f1b.js" crossorigin="anonymous"></script> #}
+		<link rel="stylesheet" href="/Content/css/index.css" />
+		{% if inApp %}
+		<link rel="stylesheet" href="/Content/css/app.css" />
+		{% endif %}
+
+		<script>
+			let vh = window.innerHeight * 0.01;
+			document.documentElement.style.setProperty('--vh', `${vh}px`);
+			window.addEventListener('resize', () => {
+				let vh = window.innerHeight * 0.01;
+				document.documentElement.style.setProperty('--vh', `${vh}px`);
+			});
+		</script>
+	</head>
+
+	<body class="game {{ @ViewBag.Language }}">
+		{% if not inApp %}{% include "header-game.html" %}{% endif %}
+
+		<main class="wrapper">{{ content | safe }}</main>
+
+		<script src="/Scripts/game.js"></script>
+		{% include "ajax.html" %}
+	</body>
+</html>

@@ -1,0 +1,55 @@
+// Headings
+
+.heading-1, .heading-2, .heading-3, .subtitle {
+	line-height: 1.3;
+	color: inherit;
+}
+
+
+.heading-1 {
+	font-size: clamp-scale(3, 5);
+	font-weight: 900;
+	line-height: 1.3;
+	margin: 0 0 clamp-scale(1.4, 2.1);
+}
+
+.heading-2 {
+	font-size: clamp-scale(2, 3.2);
+	margin: 0 0 clamp-scale(2, 3);
+	font-weight: 900;
+}
+
+.subtitle {
+	font-size: clamp-scale(2, 3.2);
+	margin: 0 0 clamp-scale(3, 4.5);
+	font-weight: 300;
+}
+
+// For all headings from h3 to h6
+.heading-3 {
+	font-weight: 700;
+}
+
+// Lists
+ul {
+	margin: 0;
+	padding: 0;
+
+	li {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+}
+
+// Links
+
+a {
+	text-decoration: none;
+}
+
+p a {
+	color: currentColor;
+	text-decoration: underline;
+	transition: color .2s ease;
+}

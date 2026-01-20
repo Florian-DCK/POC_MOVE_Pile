@@ -1,0 +1,33 @@
+/* IN APP */
+
+header,
+footer {
+	display: none;
+}
+
+body.home {
+	main.wrapper {
+		padding: 0;
+		margin-top: 0;
+	}
+
+	a.cta-back {
+		display: none;
+	}
+}
+
+body.game {
+	.screen {
+		padding-top: 0;
+		margin-top: 0;
+		height: 100%;
+	}
+
+	.in-app-no-padding {
+		padding-top: 0;
+	}
+
+	.in-app-no-margin {
+		margin-top: 0;
+	}
+}

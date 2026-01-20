@@ -1,0 +1,36 @@
+---
+permalink: /choice.html
+layout: layout-choice
+'@ViewBag':
+  Language: fr
+inApp: false
+title: Pxs Game
+logoPxs: white
+logoEnjoy: white
+soundBtn: false
+---
+
+<a href="#" class="cta-back">
+	<i class="far fa-angle-left"></i>Retour<span>&nbsp;à la liste des concours</span></a>
+
+<div class="container">
+	<form id="toGame">
+		<div class="field">
+			<input type="radio" id="choice-a" name="your-choice" value="a" required>
+			<label for="choice-a">
+				<span>Choice A</span>
+			</label>
+		</div>
+		<div class="field">
+			<input type="radio" id="choice-b" name="your-choice" value="b" required>
+			<label for="choice-b">
+				<span>Choice B</span>
+			</label>
+		</div>
+		<button type="submit" class="cta-custom">Valider</button>
+	</form>
+</div>
+
+<script>
+	document.addEventListener('DOMContentLoaded', () => {})
+</script>

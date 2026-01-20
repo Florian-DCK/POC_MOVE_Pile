@@ -1,0 +1,52 @@
+.page-transition {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: $zi-transition;
+	pointer-events: none;
+
+	.layer {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 0;
+		height: 100%;
+		background-image: url('../img/proximus/logo-proximus-pattern-spaced.svg');
+		background-repeat: repeat;
+		background-size: 150px;
+		background-position: left center;
+
+		&--1 {
+			background-color: $red;
+		}
+
+		&--2 {
+			background-color: $purple;
+			transition-delay: 0.15s !important;
+		}
+	}
+
+	&.active {
+		.layer {
+			width: 100%;
+			transition: width 0.5s $ease-out-circ;
+		}
+	}
+
+	&.right {
+		.layer {
+			left: initial;
+			right: 0;
+			width: 0;
+			transition: width 0.5s $ease-out-circ;
+		}
+	}
+
+	&.no-transition {
+		.layer {
+			transition-duration: 0;
+		}
+	}
+}

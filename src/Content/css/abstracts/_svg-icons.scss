@@ -1,0 +1,80 @@
+// Thanks to https://css-tricks.com/how-i-made-an-icon-system-out-of-css-custom-properties/ by @Mamboleoo
+
+/**
+* List of all icons svg
+* Add new icons here
+*/
+$svg-icons: (
+	angle-white: '<svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.66666 12L10.6667 8L6.66666 4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>',
+	angle-purple: '<svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.66666 12L10.6667 8L6.66666 4" stroke="#5c2d91" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>',
+	cross-dark-purple: '<svg fill="none" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke="#45216f" stroke-width="2" stroke-linecap="round"><path d="m5.035 5.035c5.186 5.186 6.603 6.603 5.657 5.657" /><path d="m10.965 5.035c-5.186 5.186-6.603 6.603-5.657 5.657" /></g></svg>',
+);
+
+/**
+* Characters to escape from SVGs
+* This list allows you to have inline CSS in your SVG code as well
+*/
+$fs-escape-chars: (
+	' ': '%20',
+	"'": '%22',
+	'"': '%27',
+	'#': '%23',
+	'/': '%2F',
+	':': '%3A',
+	'(': '%28',
+	')': '%29',
+	'%': '%25',
+	'<': '%3C',
+	'>': '%3E',
+	'\\':'%5C',
+	'^': '%5E',
+	'{': '%7B',
+	'|': '%7C',
+	'}': '%7D',
+);
+
+/**
+* You can call this function by using `svg(nameOfTheSVG)`
+*/
+@function svg($name) {
+	// Check if icon exists
+	@if not map-has-key($svg-icons, $name) {
+		@error 'icon “#{$name}” does not exists in $svg-icons map';
+		@return false;
+	}
+
+	// Get icon data
+	$icon-map: map-get($svg-icons, $name);
+
+	$escaped-string: '';
+	$unquote-icon: unquote($icon-map);
+	// Loop through each character in string
+	@for $i from 1 through str-length($unquote-icon) {
+		$char: str-slice($unquote-icon, $i, $i);
+
+		// Check if character is in symbol map
+		$char-lookup: map-get($fs-escape-chars, $char);
+
+		// If it is, use escaped version
+		@if $char-lookup != null {
+			$char: $char-lookup;
+		}
+
+		// Append character to escaped string
+		$escaped-string: $escaped-string + $char;
+	}
+
+	// Return inline SVG data
+	@return url('data:image/svg+xml, #{$escaped-string} ');
+}
+
+/**
+  * Convert all icons into custom properties
+  * They will be available to any HTML tag since they are attached to the :root
+  */
+
+:root {
+	@each $name, $code in $svg-icons {
+		--svg-#{$name}: #{svg($name)};
+	}
+}

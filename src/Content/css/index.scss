@@ -1,0 +1,25 @@
+@import 'abstracts/media-queries';
+@import 'abstracts/helpers';
+@import 'abstracts/functions';
+@import 'abstracts/variables';
+@import 'abstracts/svg-icons';
+
+@import 'vendor/normalize';
+
+@import 'globals/fonts';
+@import 'globals/globals';
+@import 'globals/typography';
+@import 'globals/defaults';
+
+@import 'components/header';
+@import 'components/footer';
+@import 'components/cta';
+@import 'components/cta-custom';
+@import 'components/gifts-overlay';
+@import 'components/loader';
+@import 'components/subsidiary-input';
+
+@import 'pages/home';
+@import 'pages/choice';
+@import 'pages/game';
+

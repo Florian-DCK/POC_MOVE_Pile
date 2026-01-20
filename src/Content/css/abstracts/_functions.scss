@@ -1,0 +1,32 @@
+// responsive clamped size
+@function clamp-scale($min, $max, $unit: rem, $unitScale: 10, $minScreen: 375, $maxScreen: 1920) {
+	@if $unit == px {
+		$unitscale: 1;
+	}
+
+	$minW: $minScreen / $unitScale;
+	$maxW: $maxScreen / $unitScale;
+
+	$slope: ($max - $min) / ($maxW - $minW);
+	$intersect: -$minW * $slope + $min;
+
+	@return clamp(#{$min}#{$unit}, #{$intersect}#{$unit} + #{$slope * 100}vw, #{$max}#{$unit});
+}
+
+@function clamp-scale-px($min, $max) {
+	@debug "clamp-scale-px is deprecated and will be deleted in a few revisions. Use clamp-scale instead.";
+	@return clamp-scale($min, $max, $unit: px);
+}
+
+@function clamp-scale-rem($min, $max, $pxPerRem: 10) {
+	@debug "clamp-scale-rem is deprecated and will be deleted in a few revisions. Use clamp-scale instead.";
+	@return clamp-scale($min, $max, $unitScale: $pxPerRem);
+}
+
+@function vh($nb) {
+	@return calc(var(--vh, 1vh) * #{$nb});
+}
+
+@function gradient-purple-red($dir) {
+	@return linear-gradient(#{$dir}, #{$purple}, #{$red});
+}

@@ -1,0 +1,56 @@
+body.game {
+
+	.pace {
+		@extend .screen;
+		z-index: $zi-loader;
+		opacity: 1;
+
+		&-inactive {
+			display: flex;
+			pointer-events: none;
+			opacity: 0;
+		}
+
+		&-progress {
+			width: clamp-scale(5, 10);
+			aspect-ratio: 1;
+			position: relative;
+			margin: 0 auto;
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: 100%;
+			transform: none !important;
+
+			&-inner {
+				display: block;
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				height: 0%;
+				background-repeat: no-repeat;
+				background-position: bottom center;
+				background-size: 100% auto;
+				z-index: 2;
+				transition: height 0.1s linear;
+			}
+
+			@for $i from 1 through 100 {
+				&[data-progress-text="#{$i}%"] .pace-progress-inner {
+					height: calc(#{$i} * 1%);
+				}
+			}
+
+			&::after {
+				content: attr(data-progress-text);
+				width: 100%;
+				margin: clamp-scale(2, 2.6) 0 0;
+				font-size: clamp-scale(1.6, 2.2);
+				font-weight: 700;
+				text-align: center;
+				position: absolute;
+				top: 100%;
+			}
+		}
+	}
+}

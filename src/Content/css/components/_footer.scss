@@ -1,0 +1,127 @@
+/* FOOTER */
+
+footer {
+	width: 100%;
+	padding: 2.4rem;
+	background: linear-gradient(95deg, #5c2d91 66%, #ff418c 100%);
+	font-size: 1.2rem;
+	line-height: 125%;
+	color: $white;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	@include respond-to(medium) {
+		padding: 3rem;
+	}
+
+	.inner {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+
+		@include respond-to(medium) {
+			flex-direction: row;
+			justify-content: space-between;
+		}
+
+		.left {
+			flex: 1;
+			margin-bottom: 2.4rem;
+
+			@include respond-to(medium) {
+				margin-bottom: 0;
+			}
+
+			img {
+				max-width: 60px;
+
+				@include respond-to(medium) {
+					max-width: 80px;
+				}
+			}
+		}
+
+		.right {
+			display: flex;
+			flex-direction: column;
+
+			@include respond-to(medium) {
+				align-items: flex-end;
+			}
+
+			.social {
+				font-weight: bold;
+				font-size: 1.4rem;
+				display: flex;
+				align-items: center;
+				margin-bottom: 2.4rem;
+
+				.icon {
+					width: 4rem;
+					height: 4rem;
+					margin-left: 1.4rem;
+					display: inline-block;
+
+					@include respond-to(medium) {
+						width: 5rem;
+						height: 5rem;
+					}
+
+					&.facebook {
+						background: url('../img/proximus/icon-fb.png') no-repeat 0 0;
+						background-size: cover;
+					}
+
+					&.twitter {
+						background: url('../img/proximus/icon-twitter.png') no-repeat 0 0;
+						background-size: cover;
+					}
+
+					&.instagram {
+						background: url('../img/proximus/icon-insta.png') no-repeat 0 0;
+						background-size: cover;
+					}
+
+					&.youtube {
+						background: url('../img/proximus/icon-youtube.png') no-repeat 0 0;
+						background-size: cover;
+					}
+				}
+			}
+
+			.app {
+				display: flex;
+				align-items: center;
+				font-size: 1.4rem;
+
+				img {
+					max-height: 9rem;
+					margin-right: 2.4rem;
+				}
+			}
+		}
+	}
+
+	a {
+		color: $white;
+		text-decoration: underline;
+
+		&:hover {
+			color: $text-neg;
+			text-decoration: underline;
+		}
+	}
+
+	.copyright {
+		color: $text-light-neg;
+		margin: 2.4rem 0 0 0;
+	}
+
+	.logo {
+		max-width: 120px;
+		margin-bottom: 2.4rem;
+	}
+}
