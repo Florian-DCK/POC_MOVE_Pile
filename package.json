@@ -63,7 +63,8 @@
 		"@hilarious-be/particle-emitter": "^1.0.0",
 		"@hilarious-be/timer": "^3.0.1",
 		"gsap": "npm:@gsap/business@^3.12.2",
-		"lodash": "^4.17.21"
+		"lodash": "^4.17.21",
+		"three": "^0.182.0"
 	},
 	"lint-staged": {
 		"*": [
