@@ -24,7 +24,9 @@ visible: loader
 </div>
 
 <div class="screen screen--game{{' screen-visible' if visible == 'game'}}">
-	<div class="screen--game__playground"></div>
+	<div class="screen--game__playground">
+		<canvas id="game-canvas" class="game-canvas"></canvas>
+	</div>
 	<div class="screen--game__ui"></div>
 	<div class="joystick"></div>
 </div>

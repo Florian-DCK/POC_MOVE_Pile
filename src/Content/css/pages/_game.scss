@@ -34,11 +34,12 @@ body.game {
 			}
 
 			&__playground {
+				overflow: hidden;
 			}
 
-			&__ui {
-			}
+		&__ui {
 		}
+	}
 
 		&--win,
 		&--lost {
@@ -46,5 +47,12 @@ body.game {
 
 		&--subsidiary {
 		}
+	}
+
+	.game-canvas {
+		display: block;
+		width: 100%;
+		height: 100%;
+		touch-action: none;
 	}
 }

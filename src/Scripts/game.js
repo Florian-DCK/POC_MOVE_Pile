@@ -10,6 +10,7 @@ import { logReadyMessage, changeScreen, dispatchCustomEvent } from './utils';
 import { config } from './_config';
 
 import './modules/subsidiary';
+import { createBabylonGame } from './modules/babylon-game';
 
 const lang = document.documentElement.lang === 'fr' ? 'fr' : 'nl';
 const imgPath = '../Content/img/';
@@ -34,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	// playground
 	const $playground = $sGame.querySelector('.screen--game__playground');
+	const $canvas = $playground.querySelector('#game-canvas');
 
 	// ui
 	const $ui = $sGame.querySelector('.screen--game__ui');
@@ -41,16 +43,23 @@ document.addEventListener('DOMContentLoaded', () => {
 	// Game
 	const Game = {
 		active: false,
+		babylon: null,
 	};
 
 	/**
 	 * LOADER
 	 */
 
-	Pace.on('done', () => {
+	const handleLoaderDone = () => {
 		changeScreen($sLoader, $sIntro);
 		Game.init();
-	});
+	};
+
+	if (window.Pace && typeof window.Pace.on === 'function') {
+		window.Pace.on('done', handleLoaderDone);
+	} else {
+		handleLoaderDone();
+	}
 
 	/**
 	 * GAME INIT
@@ -70,6 +79,9 @@ document.addEventListener('DOMContentLoaded', () => {
 	 */
 
 	Game.start = () => {
+		if (!Game.babylon && $canvas) {
+			Game.babylon = createBabylonGame($canvas);
+		}
 		dispatchCustomEvent('game-start');
 	};
 
