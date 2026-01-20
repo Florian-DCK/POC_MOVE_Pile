@@ -37,9 +37,10 @@ body.game {
 				overflow: hidden;
 			}
 
-		&__ui {
+			&__ui {
+				pointer-events: none;
+			}
 		}
-	}
 
 		&--win,
 		&--lost {

@@ -10,16 +10,27 @@ logoEnjoy: white
 visible: loader
 ---
 
-<div class="screen screen--loader{{' screen-visible' if visible == 'loader'}}"></div>
+<div
+	class="screen screen--loader{{' screen-visible' if visible == 'loader'}}"
+></div>
 
 <div class="screen screen--intro{{' screen-visible' if visible == 'intro'}}">
 	<div class="container">
 		<div class="copy">
 			<h1 class="heading-1">Bonjour Nadia</h1>
-			<h2 class="subtitle">Bienvenue dans notre jeu !<br>Pour gagner le cadeau, vous devez répondre<br>correctement aux questions.</h2>
+			<h2 class="subtitle">
+				Bienvenue dans notre jeu !<br />Pour gagner le cadeau, vous devez
+				répondre<br />correctement aux questions.
+			</h2>
 			<button class="cta-custom start-game">C'est parti !</button>
 		</div>
-		<p class="info">En validant mon inscription, je reconnais avoir <br class="sm-only" />lu et accepté <br class="lg-only">le <a href="javascript:void(0)">règlement du concours</a> <br class="sm-only">et la <a href="javascript:void(0)">politique de confidentialité</a> de Proximus.</p>
+		<p class="info">
+			En validant mon inscription, je reconnais avoir <br class="sm-only" />lu
+			et accepté <br class="lg-only" />le
+			<a href="javascript:void(0)">règlement du concours</a>
+			<br class="sm-only" />et la
+			<a href="javascript:void(0)">politique de confidentialité</a> de Proximus.
+		</p>
 	</div>
 </div>
 
@@ -28,7 +39,6 @@ visible: loader
 		<canvas id="game-canvas" class="game-canvas"></canvas>
 	</div>
 	<div class="screen--game__ui"></div>
-	<div class="joystick"></div>
 </div>
 
 <div class="screen screen--lost{{' screen-visible' if visible == 'lost'}}">
@@ -50,26 +60,39 @@ visible: loader
 	</div>
 </div>
 
-<div class="screen screen--subsidiary{{' screen-visible' if visible == 'subsidiary'}}">
+<div
+	class="screen screen--subsidiary{{' screen-visible' if visible == 'subsidiary'}}"
+>
 	<div class="container">
 		<div class="question">
 			<h1 class="heading-1">Question subsidiaire</h1>
 			<h2 class="subtitle">Quel est le poids total de ces objets&nbsp;?</h2>
 			<div class="description">
 				<a href="javascript:void(0)" class="closeDescription">Fermer</a>
-				<p>Un truc, un machin, deux bidules, une chose, et une caisse de brolles.</p>
+				<p>
+					Un truc, un machin, deux bidules, une chose, et une caisse de brolles.
+				</p>
 			</div>
 		</div>
 
 		<figure class="sub-img">
-			<img src="/Content/img/subsidiary.png" alt=""/>
+			<img src="/Content/img/subsidiary.png" alt="" />
 		</figure>
 
 		<a href="javascript:void(0)" class="openDescription">Lire plus</a>
 
 		<form id="subsidiaryForm">
 			<div class="input-container">
-				<input type="number" class="input" id="Subsidiary" name="Subsidiary" placeholder="poids en" autocomplete="off" data-msg="Veuillez entrer un nombre" required/>
+				<input
+					type="number"
+					class="input"
+					id="Subsidiary"
+					name="Subsidiary"
+					placeholder="poids en"
+					autocomplete="off"
+					data-msg="Veuillez entrer un nombre"
+					required
+				/>
 				<label class="unit" for="Subsidiary">grammes</label>
 				<label id="Subsidiary-error" class="error" for="Subsidiary"></label>
 			</div>

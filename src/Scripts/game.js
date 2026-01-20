@@ -47,21 +47,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	};
 
 	/**
-	 * LOADER
-	 */
-
-	const handleLoaderDone = () => {
-		changeScreen($sLoader, $sIntro);
-		Game.init();
-	};
-
-	if (window.Pace && typeof window.Pace.on === 'function') {
-		window.Pace.on('done', handleLoaderDone);
-	} else {
-		handleLoaderDone();
-	}
-
-	/**
 	 * GAME INIT
 	 */
 
@@ -73,6 +58,40 @@ document.addEventListener('DOMContentLoaded', () => {
 			Game.start();
 		});
 	};
+
+	/**
+	 * LOADER
+	 */
+
+	const handleLoaderDone = () => {
+		changeScreen($sLoader, $sIntro);
+		Game.init();
+	};
+
+	const isDev =
+		window.location.hostname === 'localhost' ||
+		window.location.hostname === '127.0.0.1' ||
+		window.location.search.includes('dev=1');
+
+	if (isDev) {
+		const paceEl = document.querySelector('.pace');
+		if (paceEl) {
+			paceEl.classList.add('pace-inactive');
+		}
+		if (window.Pace && typeof window.Pace.stop === 'function') {
+			window.Pace.stop();
+		}
+		if (window.Pace && window.Pace.bar && typeof window.Pace.bar.finish === 'function') {
+			window.Pace.bar.finish();
+		}
+		changeScreen($sLoader, $sGame, () => {
+			Game.start();
+		});
+	} else if (window.Pace && typeof window.Pace.on === 'function') {
+		window.Pace.on('done', handleLoaderDone);
+	} else {
+		handleLoaderDone();
+	}
 
 	/**
 	 * GAME START
