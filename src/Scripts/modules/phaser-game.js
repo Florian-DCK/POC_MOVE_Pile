@@ -59,6 +59,33 @@ export const createPhaserGame = (canvas) => {
 				rootScene = this;
 				this.input.dragDistanceThreshold = 8;
 				this.cameras.main.setBackgroundColor('#6e7297');
+				const { width, height } = this.scale;
+				const storageWidth = Math.floor(width * 0.28);
+				const storageX = width - storageWidth - 24;
+				const storageY = 24;
+				const storageH = height - 48;
+				const storageGfx = this.add.graphics();
+				storageGfx.lineStyle(3, 0xffffff, 0.6);
+				storageGfx.strokeRect(storageX, storageY, storageWidth, storageH);
+				storageGfx.lineStyle(2, 0xffffff, 0.35);
+				storageGfx.beginPath();
+				storageGfx.moveTo(storageX, storageY + storageH * 0.33);
+				storageGfx.lineTo(storageX + storageWidth, storageY + storageH * 0.33);
+				storageGfx.moveTo(storageX, storageY + storageH * 0.66);
+				storageGfx.lineTo(storageX + storageWidth, storageY + storageH * 0.66);
+				storageGfx.strokePath();
+				storageGfx.fillStyle(0xffffff, 0.9);
+				const snapPoints = [
+					{ x: storageX + storageWidth * 0.3, y: storageY + storageH * 0.2 },
+					{ x: storageX + storageWidth * 0.7, y: storageY + storageH * 0.2 },
+					{ x: storageX + storageWidth * 0.3, y: storageY + storageH * 0.5 },
+					{ x: storageX + storageWidth * 0.7, y: storageY + storageH * 0.5 },
+					{ x: storageX + storageWidth * 0.3, y: storageY + storageH * 0.8 },
+					{ x: storageX + storageWidth * 0.7, y: storageY + storageH * 0.8 },
+				];
+				snapPoints.forEach((point) => {
+					storageGfx.fillCircle(point.x, point.y, 5);
+				});
 				const saw = new GameObjectController(this, 'saw', 400, 300);
 				const hammer = new GameObjectController(this, 'hammer', 200, 150);
 			},
