@@ -10,7 +10,7 @@ import { logReadyMessage, changeScreen, dispatchCustomEvent } from './utils';
 import { config } from './_config';
 
 import './modules/subsidiary';
-import { createBabylonGame } from './modules/babylon-game';
+import { createPhaserGame } from './modules/phaser-game';
 
 const lang = document.documentElement.lang === 'fr' ? 'fr' : 'nl';
 const imgPath = '../Content/img/';
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	// Game
 	const Game = {
 		active: false,
-		babylon: null,
+		phaser: null,
 	};
 
 	/**
@@ -79,8 +79,8 @@ document.addEventListener('DOMContentLoaded', () => {
 	 */
 
 	Game.start = () => {
-		if (!Game.babylon && $canvas) {
-			Game.babylon = createBabylonGame($canvas);
+		if (!Game.phaser && $canvas) {
+			Game.phaser = createPhaserGame($canvas);
 		}
 		dispatchCustomEvent('game-start');
 	};

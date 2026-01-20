@@ -57,14 +57,14 @@
 		"webpack-cli": "^5.1.0"
 	},
 	"dependencies": {
-		"@babylonjs/core": "^8.46.2",
 		"@hilarious-be/controls-manager": "^1.0.0",
 		"@hilarious-be/event-manager": "^2.0.0",
 		"@hilarious-be/joystick": "^2.0.0",
 		"@hilarious-be/particle-emitter": "^1.0.0",
 		"@hilarious-be/timer": "^3.0.1",
 		"gsap": "npm:@gsap/business@^3.12.2",
-		"lodash": "^4.17.21"
+		"lodash": "^4.17.21",
+		"phaser": "^3.80.1"
 	},
 	"lint-staged": {
 		"*": [
